@@ -1,0 +1,5 @@
+{
+  "name": "web app craft",
+  "description": "A crafting planner for Albion Online. Calculate materials for Potions and Food, organize buy orders by city, and consult the AI for recipe advice.",
+  "requestFramePermissions": []
+}
