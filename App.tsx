@@ -91,7 +91,7 @@ const App: React.FC = () => {
         {/* Content Area */}
         <main className="flex-1 bg-[#252e40] p-4 md:p-8 overflow-y-auto relative">
            {/* Subtle texture overlay */}
-           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
 
            <div className="relative z-10 max-w-7xl mx-auto">
             
@@ -100,7 +100,7 @@ const App: React.FC = () => {
                 <GeminiAdvisor onImportRecipe={handleAiImport} />
 
                 {/* Filters */}
-                <div className="flex flex-col sm:flex-row justify-between items-center mb-6 mt-8 border-b border-slate-600 pb-4 gap-4">
+                <div className="flex flex-col sm:flex-row justify-between items-center mb-4 mt-6 border-b border-slate-600 pb-4 gap-4">
                   <h2 className="text-2xl font-fantasy text-slate-200 drop-shadow-lg">
                     Catálogo de Receitas
                   </h2>
@@ -120,8 +120,16 @@ const App: React.FC = () => {
                     ))}
                   </div>
                 </div>
+                
+                {/* Table Header */}
+                <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-2 text-xs font-bold text-slate-500 uppercase tracking-wider bg-[#131824]/50 rounded-t-lg border-b border-slate-700 mb-1">
+                  <div className="col-span-5 pl-2">Item / Tier</div>
+                  <div className="col-span-4">Ingredientes Necessários</div>
+                  <div className="col-span-3 text-right pr-2">Planejamento</div>
+                </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+                {/* List View */}
+                <div className="flex flex-col gap-2">
                   {filteredRecipes.map(item => (
                     <RecipeCard key={item.id} item={item} onAdd={(qty) => addToQueue(item, qty)} />
                   ))}

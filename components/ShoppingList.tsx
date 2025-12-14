@@ -121,7 +121,9 @@ const ShoppingList: React.FC<ShoppingListProps> = ({ queue }) => {
   return (
     <div className="space-y-8 pb-12">
       <div className="grid grid-cols-1 gap-8">
-        {Object.entries(groupedByCity).map(([city, items]) => {
+        {Object.entries(groupedByCity).map(([city, rawItems]) => {
+          // Explicit cast to avoid implicit 'unknown' type on map usage
+          const items = rawItems as ShoppingListItem[];
           const cityColorClass = CITY_COLORS[city as City] || CITY_COLORS[City.Any];
           // Extract just the text color class for the icon
           const textColorClass = cityColorClass.split(' ').find(c => c.startsWith('text-')) || 'text-slate-200';
